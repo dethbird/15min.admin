@@ -7,6 +7,7 @@
 	<!-- jquery -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="//assets.artistcontrolbox.com/js/url.min.js"></script>
+  <script src="//assets.artistcontrolbox.com/js/moment.min.js"></script>
 
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="//assets.artistcontrolbox.com/bootstrap-3.0.2/css/bootstrap.min.css">
@@ -28,7 +29,34 @@
 <body>
  
 
-<header>15m.in</header>
+<!--<header><span ng-show="api_key">logged in as {{user.email}}</span></header>-->
+
+<header ng-show="api_key">
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">15m.in admin</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><a href="#/programs">Programs</a></li>
+      <li><a href="#/extensions">Extension</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a ng-click="logout()" href="#">Logout</a></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+</header>
+
 <div ng-view class="container"></div>
 
  

@@ -8,6 +8,12 @@ siteApp = angular.module('siteApp', [
   'ngRoute',
   'siteControllers'
 ]);
+
+siteApp.filter('momentunix', function(){
+    return function(input, format) {
+      return moment.unix(input).format(format);
+    }
+});
  
 siteApp.config(['$routeProvider',
   function($routeProvider) {
@@ -16,13 +22,9 @@ siteApp.config(['$routeProvider',
         templateUrl: 'partials/login.html',
         controller: 'LoginController'
       }).
-      when('/', {
-        templateUrl: 'partials/now-playing.html',
-        controller: 'NowplayingController'
-      }).
-      when('/:videoId', {
-        templateUrl: 'partials/play.html',
-        controller: 'PlayController'
+      when('/programs', {
+        templateUrl: 'partials/program-list.html',
+        controller: 'ProgramsController'
       }).
       otherwise({
         redirectTo: '/error',

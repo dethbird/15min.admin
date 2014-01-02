@@ -18,18 +18,24 @@ siteControllers.controller('LoginController', function ($scope, $rootScope, $htt
 	  	}).success(function(data) { 
 	  		$rootScope.api_key = data.data.api_key;
 	  		$rootScope.user = data.data;
-	  		$location.path( "/" );
+	  		$location.path( "/programs" );
   		}).error(function(data) {
   			user.email = "";
   			user.password = "";
   			alert("Invalid username / password");
   		});
 	};
+
+	$scope.logout = function(){
+		$rootScope.api_key = data.data.api_key;
+  		$rootScope.user = data.data;
+  		window.location.reload();
+	}
 });
 
-siteControllers.controller('NowplayingController', function ($scope, $rootScope, $http) {
-	$http.get(api_url + '/nowplaying/?api_key=' + $rootScope.api_key).success(function(data) {
-		//console.log(data.data);
+siteControllers.controller('ProgramsController', function ($scope, $rootScope, $http) {
+	$http.get(api_url + '/programs/?api_key=' + $rootScope.api_key)
+	.success(function(data) {
 		$scope.data = data.data;
 	});
 });
