@@ -1,0 +1,32 @@
+<form novalidate class="css-form">
+
+	<div class="form-group col-xs-3">
+	    <label for="email">Email </label>
+	    <input type="email" class="form-control" id="email" ng-model="user.email" placeholder="email@domain.com" required>
+  	</div>
+  	<div class="clearfix"></div>
+  	<div class="form-group col-xs-3">
+		<label for="password">Password</label>
+		<input type="password" class="form-control" id="password"  ng-model="user.password" placeholder="passw*rd" required>
+  	</div>
+  	<div class="clearfix"></div>
+  	<div class="form-group col-xs-3">
+		<button class="btn btn-primary" ng-click="auth(user)">login</button>
+	</div>
+</form>
+
+<style type="text/css">
+		.css-form input.ng-invalid.ng-dirty {
+			border-color: #E44B4B;
+			outline: 0;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(233, 102, 102, 0.6);
+			box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(233, 102, 102, 0.6);
+		}
+    
+		.css-form input.ng-valid.ng-dirty {
+			border-color: #4BE44B;
+			outline: 0;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(128, 233, 102, 0.6);
+			box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(128, 233, 102, 0.6);
+		}
+    </style>
