@@ -14,10 +14,29 @@ siteApp.filter('momentunix', function(){
       return moment.unix(input).format(format);
     }
 });
+siteApp.filter('drawVideo', function(){
+    return function(video_id, video_provider,elementId) {
+      if(video_provider==="youtube"){
+          $('#' + elementId).html( '<iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/' + video_id + '?autoplay=0&origin=http://15m.in" frameborder="0"/>' );
+      }
+    }
+});
+siteApp.filter('picker', function(){
+    return function(timeslot, elementId) {
+      $('#' + elementId).datetimepicker({defaultDate:moment.unix(timeslot).format("MM/DD/YYYY h:mm:ss a Z")});
+      $('#' + elementId).on("change.dp",function (e) {
+          $('#' + elementId + "click").trigger('click');
+      });
+    }
+});
  
 siteApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
+      when('/', {
+        templateUrl: 'partials/login.html',
+        controller: 'LoginController'
+      }).
       when('/login', {
         templateUrl: 'partials/login.html',
         controller: 'LoginController'
@@ -25,6 +44,14 @@ siteApp.config(['$routeProvider',
       when('/programs', {
         templateUrl: 'partials/program-list.html',
         controller: 'ProgramsController'
+      }).
+      when('/programs/add', {
+        templateUrl: 'partials/program-details.html',
+        controller: 'ProgramDetailsController'
+      }).
+      when('/programs/:programId', {
+        templateUrl: 'partials/program-details.html',
+        controller: 'ProgramDetailsController'
       }).
       otherwise({
         redirectTo: '/error',

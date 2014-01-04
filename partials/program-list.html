@@ -1,6 +1,8 @@
+<a href="#/programs/add" class="btn btn-success btn-xs">Add</a>
 <table class="table table-hover">
   <thead>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Timeslot</th>
     </tr>
@@ -8,7 +10,10 @@
   <tbody>
     <tr ng-repeat="program in data">
       <td>
-  		  {{program.title}}
+        <a href="#/programs/{{program.id}}" class="btn btn-primary btn-xs">edit</a>
+      </td>
+      <td>
+  		  <img src="{{program.thumbnail_url}}" class="img-thumbnail" style="width:100px;"/> {{program.title}}
       </td>
       <td class="timeslot">
         {{program.timeslot|momentunix:"dddd, MMMM Do YYYY, h:mm:ss a Z"}}

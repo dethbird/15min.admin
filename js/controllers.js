@@ -40,20 +40,38 @@ siteControllers.controller('ProgramsController', function ($scope, $rootScope, $
 	});
 });
 
-siteControllers.controller('PlayController', function ($scope, $rootScope, $http, $routeParams) {
-	$http.get(api_url + '/galleries/?api_key=' + $rootScope.api_key + "&id=" + $routeParams.galleryId).success(function(data) {
-		$(data[0].contents).each(function(i,content){
-			//console.log(content.image_url);
-			thumbnail_url = $.url('protocol', content.image_url) + 
-							"://" +
-							$.url('sub', content.image_url) + 
-							"." + 
-							$.url('domain', content.image_url) + 
-							"/w180-h180" + 
-							$.url('path', content.image_url);
-			//console.log(thumbnail_url);
-			data[0].contents[i].thumbnail_url = thumbnail_url;
+siteControllers.controller('ProgramDetailsController', function ($scope, $rootScope, $http, $routeParams) {
+	if($routeParams.programId !== undefined){
+		$http.get(api_url + '/programs/' + $routeParams.programId + '/?api_key=' + $rootScope.api_key)
+		.success(function(data) {
+			$scope.data = data.data;
 		});
+	} else {
+		var data;
+		data = Array();
+		data.push({id:"new"});
 		$scope.data = data;
-	});
+	}
+
+	$scope.loadVideoFromUrl = function(video, program){
+		console.log(video);
+		if($.url('domain',video.url)=="youtube.com"){
+			//console.log($.url('?v',video.url));
+			program.provider = "youtube";
+			program.external_id = $.url('?v',video.url);
+
+			$http.get('http://gdata.youtube.com/feeds/api/videos/'+program.external_id+'?v=2&alt=jsonc').then(function(response) {
+			  	program.title = response.data.data.title;
+        		program.description = response.data.data.description;
+        		program.thumbnail_url = response.data.data.thumbnail.hqDefault;
+			});
+			
+		}
+	}
+
+	$scope.updateTimeslot = function(dp, program){
+		console.log(dp);
+		console.log(program);
+	}
 });
+

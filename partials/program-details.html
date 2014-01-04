@@ -1,0 +1,38 @@
+ <div ng-repeat="program in data">
+    <form novalidate class="css-form">
+    	<input type="hidden" name="id" ng-model="program.id" value="{{program.id}}" id="id" />
+    	<div class="form-group col-xs-9" id="video">
+    		{{program.external_id|drawVideo:program.provider:"video"}}
+    	</div>
+    	<div class="form-group col-xs-7">
+		    <label for="video_url">Update by URL </label>
+			<input type="text" class="form-control" id="video_url" ng-model="video.url" placeholder="http://youtube.com/watch/v=VIDEO_ID"><br />
+			<a ng-click="loadVideoFromUrl(video, program)" class="btn btn-info btn-xs pull-right">Load</a>
+	  	</div>
+    	<div class="form-group col-xs-9">
+		    <label for="title">Title </label>
+			<input type="text" class="form-control" id="title" ng-model="program.title" placeholder="Video title" value="{{program.title}}" required>
+	  	</div>
+	  	<div class="form-group col-xs-9">
+		    <label for="clickthrough_url">Clickthrough URL </label>
+			<input type="url" class="form-control" id="clickthrough_url" ng-model="program.clickthrough_url" placeholder="http://client-url.com" value="{{program.clickthrough_url}}" required>
+	  	</div>
+
+	  	<div class="form-group col-xs-9">
+		    <label for="description">Description </label>
+			<textarea class="form-control" id="description" ng-model="program.description" placeholder="A description for the video">{{program.description}}</textarea>
+	  	</div>
+
+	  	<div class="form-group col-xs-9" >
+		    <label for="timeslot">Timeslot </label>
+			<input type="hidden" id="timeslot" ng-model="program.timeslot" value="{{program.timeslot}}" required>
+			<div class='input-group date col-xs-4' id='datetimepicker'>
+                <input type='text' class="form-control"  ng-model="dp.stamp" ng-click="updateTimeslot(dp, program)"/>
+                <span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            <input type="hidden" id="datetimepickerclick"  />
+             {{program.timeslot|picker:"datetimepicker"}}
+	  	</div>
+    </form>
+</div>
