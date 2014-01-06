@@ -25,7 +25,7 @@ siteApp.filter('picker', function(){
     return function(timeslot, elementId) {
       $('#' + elementId).datetimepicker({defaultDate:moment.unix(timeslot).format("MM/DD/YYYY h:mm:ss a Z")});
       $('#' + elementId).on("change.dp",function (e) {
-          $('#' + elementId + "click").trigger('click');
+          $('#timeslot').val(moment(e.date._d).unix());
       });
     }
 });

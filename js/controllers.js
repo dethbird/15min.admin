@@ -54,7 +54,6 @@ siteControllers.controller('ProgramDetailsController', function ($scope, $rootSc
 	}
 
 	$scope.loadVideoFromUrl = function(video, program){
-		console.log(video);
 		if($.url('domain',video.url)=="youtube.com"){
 			//console.log($.url('?v',video.url));
 			program.provider = "youtube";
@@ -67,11 +66,6 @@ siteControllers.controller('ProgramDetailsController', function ($scope, $rootSc
 			});
 			
 		}
-	}
-
-	$scope.updateTimeslot = function(dp, program){
-		console.log(dp);
-		console.log(program);
 	}
 });
 
