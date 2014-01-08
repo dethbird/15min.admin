@@ -61,10 +61,26 @@ siteControllers.controller('ProgramDetailsController', function ($scope, $rootSc
 			});
 			
 		}
-	}
+	};
+
+	$scope.applyChanges = function(program){
+		program.timeslot = $('#timeslot').val();
+	};
 
 	$scope.save = function(program){
-		console.log(program);
-	}
+		/*$http({
+	       url: api_url + '/programs/?api_key=' + api_key,
+	       method: program.id=="new"?"POST":"UPDATE",
+	       headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+	       },
+	       params : program
+	  	}).success(function(data) { 
+	  		console.log(data);
+	  		//$location.path( "/programs" );
+  		}).error(function(data) {
+  			console.log(data);
+  		});*/
+	};
 });
 

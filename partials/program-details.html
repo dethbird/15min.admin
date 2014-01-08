@@ -25,7 +25,7 @@
 
 	  	<div class="form-group col-xs-9" >
 		    <label for="timeslot">Timeslot </label>
-			<input type="hidden" id="timeslot" ng-model="program.timeslot" value="{{program.timeslot}}" required>
+			<input type="hidden" id="timeslot" ng-model="program.timeslot" value="{{program.timeslot}}" required ng-click="applyChanges(program)">
 			<div class='input-group date' id='datetimepicker'>
                 <input type='text' class="form-control"  ng-model="dp.stamp" value="0" required>
                 <span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span>

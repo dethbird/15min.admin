@@ -26,6 +26,7 @@ siteApp.filter('picker', function(){
       $('#' + elementId).datetimepicker({defaultDate:moment.unix(timeslot).format("MM/DD/YYYY h:mm:ss a Z")});
       $('#' + elementId).on("change.dp",function (e) {
           $('#timeslot').val(moment(e.date._d).unix());
+          $('#timeslot').trigger("click");
       });
     }
 });
