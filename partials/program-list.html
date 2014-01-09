@@ -5,6 +5,7 @@
       <th></th>
       <th>Title</th>
       <th>Timeslot</th>
+      <th>Extension</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,9 @@
       </td>
       <td class="timeslot">
         {{program.timeslot|momentunix:"dddd, MMMM Do YYYY, h:mm:ss a Z"}}
+      </td>
+      <td class="timeslot">
+        {{program.extension|momentunix:"dddd, MMMM Do YYYY, h:mm:ss a Z"}}
       </td>
     </tr>
   </tbody>

@@ -3,7 +3,6 @@ var siteControllers;
 siteControllers = angular.module('siteControllers', []);
 
 
-
 siteControllers.controller('LoginController', function ($scope, $rootScope, $http, $location) {
 	//scope function on form submit from the view
 	$scope.auth = function(user){
@@ -35,7 +34,7 @@ siteControllers.controller('ProgramsController', function ($scope, $rootScope, $
 	});
 });
 
-siteControllers.controller('ProgramDetailsController', function ($scope, $rootScope, $http, $routeParams) {
+siteControllers.controller('ProgramDetailsController', function ($scope, $rootScope, $http, $routeParams, $location) {
 	if($routeParams.programId !== undefined){
 		$http.get(api_url + '/programs/' + $routeParams.programId + '/?api_key=' + $rootScope.api_key)
 		.success(function(data) {
@@ -50,7 +49,6 @@ siteControllers.controller('ProgramDetailsController', function ($scope, $rootSc
 
 	$scope.loadVideoFromUrl = function(video, program){
 		if($.url('domain',video.url)=="youtube.com"){
-			//console.log($.url('?v',video.url));
 			program.provider = "youtube";
 			program.external_id = $.url('?v',video.url);
 
@@ -58,29 +56,29 @@ siteControllers.controller('ProgramDetailsController', function ($scope, $rootSc
 			  	program.title = response.data.data.title;
         		program.description = response.data.data.description;
         		program.thumbnail_url = response.data.data.thumbnail.hqDefault;
+        		program.length = response.data.data.duration;
 			});
-			
 		}
 	};
 
 	$scope.applyChanges = function(program){
 		program.timeslot = $('#timeslot').val();
+		//program.extension = $('#extension').val();
 	};
 
 	$scope.save = function(program){
-		/*$http({
+		$http({
 	       url: api_url + '/programs/?api_key=' + api_key,
-	       method: program.id=="new"?"POST":"UPDATE",
+	       method: "POST",
 	       headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
 	       },
 	       params : program
 	  	}).success(function(data) { 
-	  		console.log(data);
-	  		//$location.path( "/programs" );
+	  		$location.path( "/programs" );
   		}).error(function(data) {
-  			console.log(data);
-  		});*/
+  			alert("uh oh we got issues");
+  		});
 	};
 });
 

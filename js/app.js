@@ -11,7 +11,9 @@ siteApp = angular.module('siteApp', [
 
 siteApp.filter('momentunix', function(){
     return function(input, format) {
-      return moment.unix(input).format(format);
+      if(input){
+        return moment.unix(input).format(format);
+      }
     }
 });
 siteApp.filter('drawVideo', function(){
