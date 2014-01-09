@@ -32,6 +32,15 @@ siteApp.filter('picker', function(){
       });
     }
 });
+siteApp.filter('pickerext', function(){
+    return function(extension, elementId) {
+      $('#' + elementId).datetimepicker();
+      $('#' + elementId).on("change.dp",function (e) {
+          $('#extension').val(moment(e.date._d).unix());
+          $('#extension').trigger("click");
+      });
+    }
+});
  
 siteApp.config(['$routeProvider',
   function($routeProvider) {

@@ -63,7 +63,7 @@ siteControllers.controller('ProgramDetailsController', function ($scope, $rootSc
 
 	$scope.applyChanges = function(program){
 		program.timeslot = $('#timeslot').val();
-		//program.extension = $('#extension').val();
+		program.extension = $('#extension').val();
 	};
 
 	$scope.save = function(program){

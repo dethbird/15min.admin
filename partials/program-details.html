@@ -27,12 +27,24 @@
 		    <label for="timeslot">Timeslot </label>
 			<input type="hidden" id="timeslot" ng-model="program.timeslot" value="{{program.timeslot}}" required ng-click="applyChanges(program)">
 			<div class='input-group date' id='datetimepicker'>
-                <input type='text' class="form-control"  ng-model="dp.stamp" value="0" required>
+                <input type='text' class="form-control" required>
                 <span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
              {{program.timeslot|picker:"datetimepicker"}}
 	  	</div>
+
+	  	<div class="form-group col-xs-9" >
+		    <label for="extension">Extension </label>
+			<input type="hidden" id="extension" ng-model="program.extension" value="{{program.extension}}" required ng-click="applyChanges(program)">
+			<div class='input-group date' id='datetimepickerext'>
+                <input type='text' class="form-control" required>
+                <span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+             {{program.extension|pickerext:"datetimepickerext"}}
+	  	</div>
+	  	
 	  	<div class="form-group col-xs-9" >
 	  		<a ng-click="save(program)" class="btn btn-success">Save</a>
 	  	</div>
