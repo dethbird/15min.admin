@@ -3,7 +3,9 @@
   <thead>
     <tr>
       <th></th>
+      <th>Img</th>
       <th>Title</th>
+      <th>Id</th>
       <th>Timeslot</th>
       <th>Extension</th>
     </tr>
@@ -14,7 +16,13 @@
         <a href="#/programs/{{program.id}}" class="btn btn-primary btn-xs">edit</a>
       </td>
       <td>
-  		  <img src="{{program.thumbnail_url}}" class="img-thumbnail" style="width:100px;"/> {{program.title}}
+        <img src="{{program.thumbnail_url}}" class="img-thumbnail" style="width:100px;"/>
+      </td>
+      <td>
+       {{program.title}}
+      </td>
+      <td>
+        {{program.uuid}}
       </td>
       <td class="timeslot">
         {{program.timeslot|momentunix:"dddd, MMMM Do YYYY, h:mm:ss a Z"}}
