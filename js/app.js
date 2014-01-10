@@ -34,6 +34,9 @@ siteApp.filter('picker', function(){
 });
 siteApp.filter('pickerext', function(){
     return function(extension, elementId) {
+      if(extension!=""){
+        $('#' + elementId).datetimepicker({defaultDate:moment.unix(extension).format("MM/DD/YYYY h:mm:ss a Z")}); 
+      }
       $('#' + elementId).datetimepicker();
       $('#' + elementId).on("change.dp",function (e) {
           $('#extension').val(moment(e.date._d).unix());
