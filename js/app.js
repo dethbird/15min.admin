@@ -42,6 +42,12 @@ siteApp.filter('pickerext', function(){
           $('#extension').val(moment(e.date._d).unix());
           $('#extension').trigger("click");
       });
+      $('#extension-text').on('keyup', function(){
+          if($('#extension-text').val()===""){
+            $('#extension').val("");
+            $('#extension').trigger("click");   
+          }
+      });
     }
 });
  

@@ -38,7 +38,7 @@
 		    <label for="extension">Extension </label>
 			<input type="hidden" id="extension" ng-model="program.extension" value="{{program.extension}}" required ng-click="applyChanges(program)">
 			<div class='input-group date' id='datetimepickerext'>
-                <input type='text' class="form-control" required>
+                <input type='text' id="extension-text" class="form-control" required ng-keyup="applyChanges(program)">
                 <span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>

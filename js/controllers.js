@@ -15,6 +15,7 @@ siteControllers.controller('LoginController', function ($scope, $rootScope, $htt
 	       },
 	       params : user
 	  	}).success(function(data) { 
+	  		api_key = data.data.api_key;
 	  		$rootScope.api_key = data.data.api_key;
 	  		$rootScope.user = data.data;
 	  		$location.path( "/programs" );
@@ -68,7 +69,7 @@ siteControllers.controller('ProgramDetailsController', function ($scope, $rootSc
 
 	$scope.save = function(program){
 		$http({
-	       url: api_url + '/programs/?api_key=' + api_key,
+	       url: api_url + '/programs/?api_key=' + $rootScope.api_key,
 	       method: "POST",
 	       headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
